@@ -1,10 +1,19 @@
--- [[ dluu_07 HUB - PRO EDITION ]] --
+-- [[ dluu_07 HUB - 7yd7 EMOTE EDITION ]] --
 
 local Player = game.Players.LocalPlayer
 local CoreGui = game:GetService("CoreGui")
 local RunService = game:GetService("RunService")
 
--- [ 1. GUI HELPER FUNCTIONS ] --
+-- [ 1. 7yd7 EMOTE FREE LOADSTRING ] --
+-- ئەڤ پشکە دێ هەمی ئیمۆتان لۆد کەت و کەتە فری ب ڕێکا سورسێ 7yd7
+task.spawn(function()
+    pcall(function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/7yd7/Hub/refs/heads/Branch/GUIS/Emotes.lua"))()
+        print("7yd7 Emotes Loaded Successfully!")
+    end)
+end)
+
+-- [ 2. GUI HELPER FUNCTIONS ] --
 local function AddCorner(obj, radius)
     local corner = Instance.new("UICorner")
     corner.CornerRadius = UDim.new(0, radius or 8)
@@ -19,7 +28,7 @@ local function AddStroke(obj, color, thickness)
     stroke.Parent = obj
 end
 
--- [ 2. NOTIFICATION ] --
+-- [ 3. NOTIFICATION ] --
 local function ShowNotify()
     local NotifyGui = Instance.new("ScreenGui", CoreGui)
     local TextLabel = Instance.new("TextLabel", NotifyGui)
@@ -27,20 +36,14 @@ local function ShowNotify()
     TextLabel.Position = UDim2.new(0, 0, 0.4, 0)
     TextLabel.BackgroundTransparency = 1
     TextLabel.TextColor3 = Color3.fromRGB(0, 255, 150)
-    TextLabel.TextSize = 45
-    TextLabel.Font = Enum.Font.GothamBold
-    TextLabel.Text = ">> dluu_07 HUB LOADED <<"
-    task.delay(2, function()
-        for i = 0, 1, 0.1 do
-            TextLabel.TextTransparency = i
-            task.wait(0.05)
-        end
-        NotifyGui:Destroy()
-    end)
+    TextLabel.TextSize = 40
+    TextLabel.Font = Enum.Font.Code
+    TextLabel.Text = ">> dluu_07 & 7yd7 EMOTES LOADED <<"
+    task.delay(3, function() NotifyGui:Destroy() end)
 end
 ShowNotify()
 
--- [ 3. MAIN GUI SETUP ] --
+-- [ 4. MAIN GUI SETUP ] --
 if CoreGui:FindFirstChild("dluu_07_HUB") then CoreGui.dluu_07_HUB:Destroy() end
 local MainGui = Instance.new("ScreenGui", CoreGui)
 MainGui.Name = "dluu_07_HUB"
@@ -53,13 +56,13 @@ MainFrame.Active = true
 MainFrame.Draggable = true
 MainFrame.BorderSizePixel = 0
 AddCorner(MainFrame, 12)
-AddStroke(MainFrame, Color3.fromRGB(0, 200, 255), 2) -- Neon Blue Border
+AddStroke(MainFrame, Color3.fromRGB(0, 255, 150), 2) -- Neon Green for 7yd7 Style
 
 local Title = Instance.new("TextLabel", MainFrame)
-Title.Text = "dluu_07 HUB V1"
+Title.Text = "dluu_07 x 7yd7"
 Title.Size = UDim2.new(1, 0, 0.12, 0)
 Title.TextColor3 = Color3.fromRGB(255, 255, 255)
-Title.BackgroundColor3 = Color3.fromRGB(20, 20, 30)
+Title.BackgroundColor3 = Color3.fromRGB(20, 30, 25)
 Title.Font = Enum.Font.GothamBold
 AddCorner(Title, 12)
 
@@ -67,7 +70,7 @@ local TargetInput = Instance.new("TextBox", MainFrame)
 TargetInput.PlaceholderText = "Target Name..."
 TargetInput.Size = UDim2.new(0.9, 0, 0.1, 0)
 TargetInput.Position = UDim2.new(0.05, 0, 0.15, 0)
-TargetInput.BackgroundColor3 = Color3.fromRGB(25, 25, 35)
+TargetInput.BackgroundColor3 = Color3.fromRGB(25, 35, 30)
 TargetInput.TextColor3 = Color3.fromRGB(255, 255, 255)
 AddCorner(TargetInput, 6)
 
@@ -75,7 +78,7 @@ local SpeedInput = Instance.new("TextBox", MainFrame)
 SpeedInput.Text = "25"
 SpeedInput.Size = UDim2.new(0.9, 0, 0.1, 0)
 SpeedInput.Position = UDim2.new(0.05, 0, 0.27, 0)
-SpeedInput.BackgroundColor3 = Color3.fromRGB(25, 25, 35)
+SpeedInput.BackgroundColor3 = Color3.fromRGB(25, 35, 30)
 SpeedInput.TextColor3 = Color3.fromRGB(255, 255, 255)
 AddCorner(SpeedInput, 6)
 
@@ -89,39 +92,34 @@ local function CreateBtn(text, pos, color, hoverColor)
     btn.Font = Enum.Font.GothamBold
     btn.BorderSizePixel = 0
     AddCorner(btn, 8)
-    
-    btn.MouseEnter:Connect(function() btn.BackgroundColor3 = hoverColor end)
-    btn.MouseLeave:Connect(function() btn.BackgroundColor3 = color end)
     return btn
 end
 
--- [ 4. BUTTONS & ACTIONS ] --
-local AntiBangBtn = CreateBtn("ANTI-BANG (FIXED)", UDim2.new(0.05, 0, 0.42, 0), Color3.fromRGB(40, 40, 60), Color3.fromRGB(60, 60, 90))
-local FrontBtn = CreateBtn("MODE 1: FRONT", UDim2.new(0.05, 0, 0.55, 0), Color3.fromRGB(0, 120, 200), Color3.fromRGB(0, 150, 255))
-local BackBtn = CreateBtn("MODE 2: BACK", UDim2.new(0.05, 0, 0.68, 0), Color3.fromRGB(100, 0, 180), Color3.fromRGB(130, 0, 220))
+-- [ 5. BUTTONS ] --
+local AntiBangBtn = CreateBtn("ANTI-BANG (FIXED)", UDim2.new(0.05, 0, 0.42, 0), Color3.fromRGB(40, 60, 50), Color3.fromRGB(60, 90, 70))
+local FrontBtn = CreateBtn("MODE 1: FRONT", UDim2.new(0.05, 0, 0.55, 0), Color3.fromRGB(0, 150, 100), Color3.fromRGB(0, 200, 120))
+local BackBtn = CreateBtn("MODE 2: BACK", UDim2.new(0.05, 0, 0.68, 0), Color3.fromRGB(0, 100, 150), Color3.fromRGB(0, 120, 200))
 local StopBtn = CreateBtn("STOP ALL", UDim2.new(0.05, 0, 0.83, 0), Color3.fromRGB(150, 0, 0), Color3.fromRGB(200, 0, 0))
 
--- Floating Toggle Button
+-- Toggle Button
 local ToggleBtn = Instance.new("TextButton", MainGui)
 ToggleBtn.Size = UDim2.new(0, 85, 0, 35)
 ToggleBtn.Position = UDim2.new(0, 15, 0.5, 0)
-ToggleBtn.Text = "dluu_07"
-ToggleBtn.BackgroundColor3 = Color3.fromRGB(0, 150, 255)
+ToggleBtn.Text = "7yd7 x dluu"
+ToggleBtn.BackgroundColor3 = Color3.fromRGB(0, 200, 120)
 ToggleBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
 ToggleBtn.Font = Enum.Font.GothamBold
 ToggleBtn.Draggable = true
 AddCorner(ToggleBtn, 10)
-AddStroke(ToggleBtn, Color3.fromRGB(255, 255, 255), 1)
 
 ToggleBtn.MouseButton1Click:Connect(function() MainFrame.Visible = not MainFrame.Visible end)
 
--- [ 5. LOGIC SECTION ] --
+-- [ 6. LOGIC ] --
 local TargetPlayer = nil
 local Mode = ""
 local IsActive = false
 local Angle = 0
 
--- Anti-Bang Function (The one you provided)
 AntiBangBtn.MouseButton1Click:Connect(function()
     local hrp = Player.Character:FindFirstChild("HumanoidRootPart")
     if hrp then
